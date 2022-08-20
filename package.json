@@ -11,7 +11,7 @@
     "sequelize": "NODE_ENV=development sequelize-cli --env development",
     "sequelize-init": "npm run sequelize init && npx tsc --project .sequelizetsconfig.json",
     "update-sequelize":"npx tsc --project .sequelizetsconfig.json",
-    "init-server": "npm i && npm run sequelize-init ; npm run docker"
+    "init-server": "npm i && npm run sequelize-init ; npm run docker && npm run sequelize db:migrate && npm run sequelize db:migrate:status"
   },
   "keywords": [],
   "author": "",
