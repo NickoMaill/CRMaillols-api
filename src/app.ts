@@ -6,20 +6,23 @@ import listEndpoints from "express-list-endpoints"
 import logColors from './helpers/logColors';
 import configManager from './manager/configManager';
 import dotenv from "dotenv";
+import path from 'path';
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-console.log(configManager.__env);
-
-
 const PORT = process.env.PORT || 8000 || 8001;
 
 app.get("/", (_req: Request, res: Response) => {    
     res.send("<h1>Welcome on CRMaillols Backend</h1><br><span>please visite our website at <a href='https://crmaillols.fr/'>https://crmaillols.fr/</a></span>");
 });
+
+app.get("*", (req: Request, res: Response) => {
+    console.error(res.app.stack);
+    res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+})
 
 app.use(async (err: any, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof StandardError) {
