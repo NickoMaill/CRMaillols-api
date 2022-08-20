@@ -19,16 +19,25 @@ class ConfigManager {
         };        
     }
 
-    public configEnvFile(): string {
-        if (process.env.NODE_ENV === 'development') {
+    public configEnvFile(): string | undefined {
+        if (process.env.NODE_ENV === 'development.local') {
             return '.env.development.local';
-        } else {
+        }
+
+        if (process.env.NODE_ENV === 'development'){
             return '.env.development';
         }
+
+        if (process.env.NODE_ENV === 'production'){
+            return '.env';
+        }
+
+        return
+
     }
 
     public sslConfig(): boolean {
-        if (process.env.NODE_ENV === 'development') {
+        if (process.env.NODE_ENV === 'development.local') {
             return false;
         } else {
             return true;
