@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png" />
+		<link rel="icon" type="icon/ico" href="/favicon.ico" />
+        <link rel="manifest" href="/assets/icon/site.webmanifest" />
+        <link rel="mask-icon" href="/assets/icon/safari-pinned-tab.svg" color="#303030" />
+        <meta name="msapplication-TileColor" content="#7dd7ee" />
+        <meta name="theme-color" content="#ffffff" />
+        <title>CRMaillols - Backend</title>
+    </head>
+    <style>
+        @font-face {
+			font-family: "Roboto";
+			src: url(/Fonts/Roboto/Roboto-Regular.ttf);
+		}
+
+		body {
+			font-family: "Roboto", Arial, Helvetica, sans-serif;
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		.main-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		.detail-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 1rem;
+			width: 90%;
+		}
+
+		.home-button {
+			cursor: pointer;
+			background-color: rgb(205, 136, 63);
+			border: solid 1px transparent;
+			border-radius: 4rem;
+			padding: 0.5rem;
+			padding-inline: 4rem;
+			margin: 2rem;
+			color: #fff;
+			text-decoration: none;
+			width: 10rem;
+			text-align: center;
+		}
+    </style>
+    <body>
+        <main>
+            <div class="main-container">
+                <div>
+                    <h1>Bienvenue</h1>
+                </div>
+                <div class="detail-container">
+                    <span>Vous êtes actuellement au porte d'un monde auquel vous n'êtes malheureusement pas convié ...</span>
+                    <span>Cependant on vous attends avec impatience sur <a href="http://localhost:3000/">https://crmaillols.fr</a>!</span>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

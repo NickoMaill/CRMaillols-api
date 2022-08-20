@@ -32,7 +32,7 @@ app.use("/default", DefaultRoutes.route) // --> JUST FOR TEST
 // FIRST ROUTE
 
 app.get("/", (_req: Request, res: Response) => {    
-    res.send("<h1>Welcome on CRMaillols Backend</h1><br><span>please visite our website at <a href='https://crmaillols.fr/'>https://crmaillols.fr/</a></span>");
+    res.status(200).sendFile(path.join(__dirname, '/views/defaultPage.html'))
 });
 
 // 404 HANDLER
