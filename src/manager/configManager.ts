@@ -15,9 +15,8 @@ class ConfigManager {
             PGUSER: process.env.PGUSER,
             PGPORT: process.env.PGPORT,
             PGPASSWORD: process.env.PGPASSWORD,
-        };
-        console.log(this.__env.NODE_ENV);
-        
+            DBDIALECT: process.env.DBDIALECT
+        };        
     }
 
     public configEnvFile(): string {

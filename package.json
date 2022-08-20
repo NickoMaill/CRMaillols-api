@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node dist/app.js",
-    "docker": "docker-compose --env-file .env.development.local up -b",
+    "docker": "docker-compose --env-file .env.development.local up -d",
     "dev": "NODE_ENV=development nodemon --watch src -e js,ts,json --exec \"ts-node src/app.ts\"",
     "build": "tsup src/app.ts --format cjs --clean",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sequelize": "NODE_ENV=development.local sequelize-cli --env development",
-    "sequelize-init": "npm run sequelize init & npx tsc --project .sequelizetsconfig.json"
+    "sequelize": "NODE_ENV=development sequelize-cli --env development",
+    "sequelize-init": "npm run sequelize init && npx tsc --project .sequelizetsconfig.json",
+    "update-sequelize":"npx tsc --project .sequelizetsconfig.json",
+    "init-server": "npm i && npm run sequelize-init ; npm run docker"
   },
   "keywords": [],
   "author": "",

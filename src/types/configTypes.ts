@@ -7,5 +7,6 @@ export interface IConfigEnv {
     PGUSER: string | undefined,
     PGPORT: string | undefined,
     PGPASSWORD: string | undefined,
+    DBDIALECT: string | undefined,
     [key: string]: string | undefined
 }

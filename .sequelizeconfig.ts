@@ -7,6 +7,7 @@ module.exports = {
         database: configManager.__env.PGDATABASE,
         host: configManager.__env.PGHOST,
         dialect: configManager.__env.DBDIALECT,
+        port: configManager.__env.PGPORT,
     },
     test: {
         username: configManager.__env.PGUSER,
@@ -14,6 +15,7 @@ module.exports = {
         database: configManager.__env.PGDATABASE,
         host: configManager.__env.PGHOST,
         dialect: configManager.__env.DBDIALECT,
+        port: configManager.__env.PGPORT,
     },
     production: {
         username: configManager.__env.PGUSER,
@@ -21,5 +23,6 @@ module.exports = {
         database: configManager.__env.PGDATABASE,
         host: configManager.__env.PGHOST,
         dialect: configManager.__env.DBDIALECT,
+        port: configManager.__env.PGPORT,
     },
 };
