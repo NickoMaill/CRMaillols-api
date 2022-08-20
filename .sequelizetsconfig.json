@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonJs",
+        "strict": false,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["src/*"]
+        },
+        "outDir": "sequelize",
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    },
+    "include": [".sequelizeconfig.ts"],
+    "rootDir": "sequelize"
+}

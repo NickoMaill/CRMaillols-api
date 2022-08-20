@@ -3,3 +3,5 @@
 /logs
 /pgdata
 /dist
+/sequelize
+/seeders
