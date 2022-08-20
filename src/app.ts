@@ -1,28 +1,48 @@
 import express, { NextFunction, Response, Request } from 'express';
 import cors from "cors";
 import { HttpError } from 'http-errors'
+import path from 'path';
+import morgan from 'morgan';
+import apiLimiter from "express-rate-limit";
 import { StandardError } from './core/standardError';
 import listEndpoints from "express-list-endpoints"
 import logColors from './helpers/logColors';
 import configManager from './manager/configManager';
-import dotenv from "dotenv";
-import path from 'path';
+import * as DefaultRoutes from './routes/defaultRoutes';
+import { serverLimiter } from './middlewares/apiLimiter';
+
+// CONST INIT
 
 const app = express();
+const PORT = process.env.PORT || 8000 || 8001;
+
+// MIDDLEWARES
 
 app.use(express.json());
+app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(cors());
+app.use(morgan('dev'));
+app.use("*", serverLimiter)
 
-const PORT = process.env.PORT || 8000 || 8001;
+// ROUTE CONTROLLER
+
+app.use("/default", DefaultRoutes.route) // --> JUST FOR TEST
+
+// FIRST ROUTE
 
 app.get("/", (_req: Request, res: Response) => {    
     res.send("<h1>Welcome on CRMaillols Backend</h1><br><span>please visite our website at <a href='https://crmaillols.fr/'>https://crmaillols.fr/</a></span>");
 });
 
+// 404 HANDLER
+
 app.get("*", (req: Request, res: Response) => {
     console.error(res.app.stack);
     res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
 })
+
+// STANDARD ERROR HANDLER
 
 app.use(async (err: any, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof StandardError) {
@@ -46,6 +66,8 @@ app.use(async (err: any, req: Request, res: Response, next: NextFunction) => {
         res.status(500).json({ errorCode: 'internal_error', message: "" ? error.message : `Internal Server Error` })
     }
 });
+
+// LISTEN INIT
 
 app.listen(PORT, () => {
     console.log("\n", logColors.BgGreen, logColors.FgBlack, "[Untel's Backend configuration loaded] ⚠️ local only ⚠️", logColors.Reload, "\n");
