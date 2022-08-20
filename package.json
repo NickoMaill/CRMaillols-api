@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development.local & nodemon src/index.ts",
+    "start": "node dist/app.js",
     "docker": "docker-compose --env-file .env.development.local up -b",
-    "start-unix": "NODE_ENV=development.local nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sync": "ts-node -r tsconfig-paths/register tmp_sync/sync.ts",
-    "watch": "NODE_ENV=development webpack --mode development --watch"
+    "dev": "NODE_ENV=development nodemon --watch src -e js,ts,json --exec \"ts-node src/app.ts\"",
+    "build": "tsup src/app.ts --format cjs --clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +16,7 @@
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/express-list-endpoints": "^6.0.0",
     "@types/http-errors": "^1.8.2",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/morgan": "^1.9.3",
@@ -47,7 +47,11 @@
     "node-fetch": "^3.2.10",
     "node-schedule": "^2.1.0",
     "pg": "^8.7.3",
+    "sib-api-v3-sdk": "^8.4.2",
+    "sib-api-v3-typescript": "^2.2.2",
+    "tsconfig-paths": "^4.1.0",
     "tslib": "^2.4.0",
+    "tsup": "^6.2.2",
     "uuid": "^8.3.2",
     "winston": "^3.8.1",
     "xss": "^1.0.14"

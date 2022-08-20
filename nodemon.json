@@ -3,7 +3,7 @@
     "ext": "ts",
     "ignore": ["**/*.spec.ts", "node_modules", "documentation", "tests/**/*.ts"],
     "events":{
-      "crash": "kill-port 3000"
+      "crash": "kill-port 8000"
     },
     "delay": 200
   }
