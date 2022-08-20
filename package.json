@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "NODE_ENV=development sequelize-cli --env development",
     "sequelize-init": "npm run sequelize init && npx tsc --project .sequelizetsconfig.json",
-    "update-sequelize":"npx tsc --project .sequelizetsconfig.json",
+    "update-sequelize": "npx tsc --project .sequelizetsconfig.json",
     "init-server": "npm i && npm run sequelize-init ; npm run docker && npm run sequelize db:migrate && npm run sequelize db:migrate:status"
   },
   "keywords": [],
@@ -36,7 +36,6 @@
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "custom-env": "^2.0.1",
     "debug": "^4.3.4",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",

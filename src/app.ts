@@ -3,7 +3,6 @@ import cors from "cors";
 import { HttpError } from 'http-errors'
 import path from 'path';
 import morgan from 'morgan';
-import apiLimiter from "express-rate-limit";
 import { StandardError } from './core/standardError';
 import listEndpoints from "express-list-endpoints"
 import logColors from './helpers/logColors';
@@ -23,6 +22,7 @@ app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(cors());
 app.use(morgan('dev'));
+
 app.use("*", serverLimiter)
 
 // ROUTE CONTROLLER
