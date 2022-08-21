@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { IConfigEnv } from '~/types/configTypes';
+import { IConfigEnv } from '~/contracts/config';
 
 class ConfigManager {
     public readonly __env: IConfigEnv;
