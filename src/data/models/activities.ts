@@ -1,5 +1,5 @@
 import { Model, DataTypes, ModelStatic, Sequelize } from 'sequelize';
-import { IMeetingsEntity } from '~/contracts/meetings';
+import { IMeetingsEntity } from '~/data/contracts/meetings';
 
 export default class Meeting extends Model implements IMeetingsEntity {
     public readonly id: number;

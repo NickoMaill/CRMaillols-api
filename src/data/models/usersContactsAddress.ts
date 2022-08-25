@@ -1,5 +1,5 @@
 import { Model, DataTypes, ModelStatic, Sequelize } from 'sequelize';
-import { IContactAddress } from '~/contracts/userContacts';
+import { IContactAddress } from '~/data/contracts/userContacts';
 class UsersContactsAddress extends Model implements IContactAddress {
     public readonly id: number;
     public readonly contactId: number;

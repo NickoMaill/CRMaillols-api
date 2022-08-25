@@ -1,5 +1,5 @@
 import { DataTypes, Model, ModelStatic, Sequelize } from 'sequelize';
-import { IUserContactEntity } from '~/contracts/userContacts';
+import { IUserContactEntity } from '~/data/contracts/userContacts';
 
 export default class UsersContacts extends Model implements IUserContactEntity {
     id: number;
@@ -14,7 +14,7 @@ export default class UsersContacts extends Model implements IUserContactEntity {
     updatedAt?: Date;
     deletedAt?: Date;
 
-    static associate(models: any) {
+    static associate(models: { Users: ModelStatic<Model<any, any>>; }) {
         this.hasMany(models.Users, { foreignKey: 'id', as: 'userId' });
     }
 }

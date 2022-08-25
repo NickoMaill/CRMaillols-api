@@ -1,5 +1,5 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
-import { IUserEntity, UserTypeEnum } from '~/contracts/user';
+import { IUserEntity, UserTypeEnum } from '~/data/contracts/user';
 
 export default class Users extends Model implements IUserEntity {
     public id: number;
