@@ -1,21 +1,21 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Sequelize } from 'sequelize';
 import { IUserEntity, UserTypeEnum } from '~/contracts/user';
 
-export default class Users extends Model implements IUserEntity{
-  public id: number;
-  public firstName: string;
-  public lastName?: string;
-  public email: string;
-  public password: string;
-  public phone: string;
-  public status: UserTypeEnum;
-  public createdAt?: Date;
-  public updatedAt?: Date;
-  public deletedAt?: Date;
-  
-  static associate(models: any) {
-    // define association here
-  }
+export default class Users extends Model implements IUserEntity {
+    public id: number;
+    public firstName: string;
+    public lastName?: string;
+    public email: string;
+    public password: string;
+    public phone: string;
+    public status: UserTypeEnum;
+    public createdAt?: Date;
+    public updatedAt?: Date;
+    public deletedAt?: Date;
+
+    static associate(models: any) {
+        // define association here
+    }
 }
 module.exports = (sequelize: any) => {
     Users.init(
@@ -44,24 +44,24 @@ module.exports = (sequelize: any) => {
                 allowNull: false,
                 unique: true,
                 validate: {
-                  len: {
-                    args: [1, 60],
-                    msg: 'email_len_incorrect'
-                  },
-                  isEmail: {
-                    msg: 'email_format_incorrect'
-                  }
-                }
+                    len: {
+                        args: [1, 60],
+                        msg: 'email_len_incorrect',
+                    },
+                    isEmail: {
+                        msg: 'email_format_incorrect',
+                    },
+                },
             },
             phone: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
                 validate: {
-                  is: {
-                    args: /^\+[1-9]\d{1,14}$/,
-                    msg: 'phone_number_format_incorrect'
-                  },
+                    is: {
+                        args: /^\+[1-9]\d{1,14}$/,
+                        msg: 'phone_number_format_incorrect',
+                    },
                 },
             },
             password: {
@@ -71,19 +71,19 @@ module.exports = (sequelize: any) => {
             type: {
                 type: DataTypes.INTEGER,
                 validate: {
-                  min: {
-                    msg: 'type_min_incorrect',
-                    args: [UserTypeEnum.Admin]
-                  },
-                  max: {
-                    msg: 'type_max_incorrect',
-                    args: [UserTypeEnum.Pending]
-                  }
+                    min: {
+                        msg: 'type_min_incorrect',
+                        args: [UserTypeEnum.Admin],
+                    },
+                    max: {
+                        msg: 'type_max_incorrect',
+                        args: [UserTypeEnum.Pending],
+                    },
                 },
                 defaultValue: UserTypeEnum.User,
             },
             resetPasswordToken: {
-              type: DataTypes.STRING,
+                type: DataTypes.STRING,
             },
         },
         {

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Contacts', {
+        await queryInterface.createTable('Deals', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -16,22 +16,34 @@ module.exports = {
                     as: 'userId',
                 },
             },
-            firstName: {
-                type: Sequelize.STRING(50),
-                allowNull: false,
+            contactId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Contacts',
+                    key: 'id',
+                    as: 'contactId',
+                },
             },
-            lastName: {
-                type: Sequelize.STRING(50),
+            label: {
+                type: Sequelize.STRING,
             },
-            society: {
-                type: Sequelize.STRING(60),
+            pipelineStatus: {
+                type: Sequelize.INTEGER,
             },
-            isFavorite: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: false,
+            goalValue: {
+                type: Sequelize.DECIMAL(10, 2),
             },
-            deletedAt: {
+            expectedClose: {
                 type: Sequelize.DATE,
+            },
+            duration: {
+                type: Sequelize.DATE,
+            },
+            isWon: {
+                type: Sequelize.BOOLEAN,
+            },
+            details: {
+                type: Sequelize.STRING,
             },
             createdAt: {
                 allowNull: false,
@@ -44,6 +56,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('UsersContacts');
+        await queryInterface.dropTable('Deals');
     },
 };

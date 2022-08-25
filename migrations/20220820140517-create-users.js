@@ -14,7 +14,6 @@ module.exports = {
       },
       lastName: {
         type: Sequelize.STRING(50),
-
       },
       email: {
         type: Sequelize.STRING(60),
@@ -32,7 +31,7 @@ module.exports = {
       },
       type: {
         type: Sequelize.INTEGER,
-        defaultValue: 1,
+        defaultValue: 0,
       },
       resetPasswordToken: {
         type: Sequelize.STRING

@@ -1,7 +1,5 @@
-'use strict';
-import { DataTypes, Model, ModelStatic } from 'sequelize';
+import { DataTypes, Model, ModelStatic, Sequelize } from 'sequelize';
 import { IUserContactEntity } from '~/contracts/userContacts';
-import Users from './users';
 
 export default class UsersContacts extends Model implements IUserContactEntity {
     id: number;
@@ -16,7 +14,7 @@ export default class UsersContacts extends Model implements IUserContactEntity {
     updatedAt?: Date;
     deletedAt?: Date;
 
-    static associate(models: { Users: ModelStatic<Model<any, any>> }) {
+    static associate(models: any) {
         this.hasMany(models.Users, { foreignKey: 'id', as: 'userId' });
     }
 }
@@ -31,7 +29,6 @@ module.exports = (sequelize: any) => {
                         msg: 'firstName_len_incorrect',
                         args: [1, 50],
                     },
-                    
                 },
             },
             lastName: {
@@ -70,10 +67,10 @@ module.exports = (sequelize: any) => {
                     },
                 },
             },
-            isFavorite: { 
-              type: DataTypes.BOOLEAN ,
-              defaultValue: false,
-              allowNull: false,
+            isFavorite: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+                allowNull: false,
             },
             deletedAt: { type: DataTypes.DATE },
         },

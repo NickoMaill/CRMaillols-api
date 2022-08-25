@@ -13,3 +13,18 @@ export interface IUserContactEntity {
     updatedAt?: Date;
     deletedAt?: Date;
 }
+
+export interface IContactAddress {
+    id: number;
+    contactId: number,
+    street?: string;
+    city?: string;
+    postalCode?: string;
+    country?: string;
+    details?: string;
+    latitude?: number;
+    longitude?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date;
+}

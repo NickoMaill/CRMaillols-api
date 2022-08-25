@@ -1,12 +1,20 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('UsersContactsAddresses', {
+    await queryInterface.createTable('ContactsAddresses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      contactId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'Contacts',
+            key: 'id',
+            as: 'contactId',
+        },
       },
       street: {
         type: Sequelize.STRING
@@ -24,10 +32,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       latitude: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(15, 12)
       },
       longitude: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL(15, 12)
       },
       createdAt: {
         allowNull: false,
